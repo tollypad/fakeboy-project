@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Cascadia Mono", "Consolas", "Courier New", monospace;
+  color: #c9ffe0;
+  background-color: #040806;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(38, 120, 74, 0.25), transparent 45%),
+    radial-gradient(circle at 70% 20%, rgba(15, 80, 52, 0.4), transparent 50%),
+    linear-gradient(160deg, #040806 0%, #07140e 45%, #0c1b14 100%);
+}
+
+.crt-screen {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(100, 225, 162, 0.35);
+  box-shadow: 0 0 35px rgba(26, 168, 100, 0.4), inset 0 0 35px rgba(26, 168, 100, 0.2);
+}
+
+.crt-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(6, 18, 13, 0.65) 0px,
+    rgba(6, 18, 13, 0.65) 2px,
+    rgba(10, 40, 25, 0.18) 3px,
+    rgba(10, 40, 25, 0.18) 4px
+  );
+  opacity: 0.3;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.crt-screen::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(0, 0, 0, 0.1),
+    rgba(255, 255, 255, 0.04)
+  );
+  animation: crt-flicker 4s infinite;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.crt-flicker {
+  animation: text-flicker 3.4s infinite;
+}
+
+@keyframes crt-flicker {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.35;
+  }
+  70% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes text-flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 0.85;
+  }
+  43% {
+    opacity: 0.6;
+  }
+  45% {
+    opacity: 0.95;
+  }
+}
